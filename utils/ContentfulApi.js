@@ -1,4 +1,6 @@
 // /utils/ContentfulApi.js
+import { Config } from "./Config";
+
 
 export default class ContentfulApi {
 
