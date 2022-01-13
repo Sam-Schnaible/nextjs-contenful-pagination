@@ -16,8 +16,8 @@ export default function PostList(props) {
         {posts.map((post) => (
           <li key={post.sys.id}>
             <article>
-              <time dateTime={formatPublishedDateForDateTime(date)}>
-                {formatPublishedDateForDisplay(date)}
+              <time dateTime={formatPublishedDateForDateTime(post.date)}>
+                {formatPublishedDateForDisplay(post.date)}
               </time>
 
               <Link href={`blog/${post.slug}`}>
@@ -27,7 +27,7 @@ export default function PostList(props) {
               </Link>
 
               <ul>
-                {tags.map((tag) => (
+                {post.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
