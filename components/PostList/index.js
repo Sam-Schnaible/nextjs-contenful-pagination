@@ -7,9 +7,14 @@ import {
   formatPublishedDateForDateTime,
   formatPublishedDateForDisplay,
 } from "@utils/Date";
+import Pagination from "@components/PostList/Pagination";
 
 export default function PostList(props) {
-  const { posts } = props;
+
+  const { posts, currentPage, totalPages } = props;
+
+  const nextDisabled = parseInt(currentPage, 10) === parseInt(totalPages, 10);
+  const prevDisabled = parseInt(currentPage, 10) === 1;
 
   return (
       <ol>
@@ -39,6 +44,12 @@ export default function PostList(props) {
             </article>
           </li>
         ))}
+        <Pagination
+        totalPages={totalPages}
+        currentPage={currentPage}
+        nextDisabled={nextDisabled}
+        prevDisabled={prevDisabled}
+      />
       </ol>
   );
 }
