@@ -23,4 +23,23 @@ export default class ContentfulApi {
       throw new Error("Could not fetch data from Contentful!");
     }
   }
+
+  static async getTotalPostsNumber() {
+    // Build the query
+    const query = `
+      {
+        blogPostCollection {
+          total
+        }
+      }
+    `;
+
+    // Call out to the API
+    const response = await this.callContentful(query);
+    const totalPosts = response.data.blogPostCollection.total
+      ? response.data.blogPostCollection.total
+      : 0;
+
+    return totalPosts;
+  }
 }
